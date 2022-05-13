@@ -2,12 +2,17 @@ import { createGlobalStyle } from "styled-components";
 
 export const  GlobalStyles = createGlobalStyle`
     :root{
+        --primary: #C83967;
+        --primary-ligth: #C8396760;
+        --secondary: #DD9AC2;
+        --orange: #FB6A21;
         --green: #8FC549;
         --red: #EA5766;
         --yellow: #FFFF81;
         --white: #FFFFFF;
+        --black: #191919;
+        --gray: #909090
     }
-
     * {
         margin: 0;
         padding: 0;
@@ -45,7 +50,7 @@ export const  GlobalStyles = createGlobalStyle`
         color: currentColor;
     }
 
-    button, a {
+    button, a, svg {
         cursor: pointer;
     }
 
