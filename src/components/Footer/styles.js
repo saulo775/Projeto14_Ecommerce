@@ -13,9 +13,20 @@ export const Container = styled.main`
         justify-content: space-between;
         color: var(--primary);
         h1 {
-            font-family: 'Shadows Into Light', cursive;
+            font-family: 'Great Vibes', cursive;
             font-size: 3rem;
         }
+        nav {
+            a{
+                margin-left: 1rem;
+                font-size: 1.25rem;
+
+                :hover {
+                    color: var(--secondary);
+                }
+            }
+        }
+        
     }
 
     p {

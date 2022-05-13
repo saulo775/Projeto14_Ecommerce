@@ -15,7 +15,7 @@ export const Header = styled.header`
     color: var(--primary);
 
     h1 {
-        font-family: 'Shadows Into Light', cursive;
+        font-family: 'Great Vibes', cursive;
         font-size: 2.5rem;
     }
 
