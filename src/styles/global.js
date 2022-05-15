@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+
 export const  GlobalStyles = createGlobalStyle`
     :root{
         --green: #8FC549;
@@ -27,15 +28,16 @@ export const  GlobalStyles = createGlobalStyle`
     body{
         -webkit-font-smooth: antialiased;
         font-family: 'Josefin Sans', sans-serif;
-        color: var(--text-color);
+        color: var(--text-color);   
+        background-color:#EEEEEE;     
     }
 
-    h1, h2 {
+    h1, h2, h3 {
         font-family: 'Poppins', sans-serif;
         font-weight: 400;
     }
 
-    h3, h4, h5, h6, a, p {
+    h4, h5, h6, a, p {
         font-family: 'Josefin Sans', sans-serif;
         font-weight: 400;
     }
