@@ -1,7 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
-import SignUp from "./components/sign-up/index.jsx"
-import SignIn from "./components/sign-in/index.jsx";
+import Home  from "./pages/Home";
+import SignUp from "./pages/sign-up/index.jsx"
+import SignIn from "./pages/sign-in/index.jsx";
+import ShoppingCart from "./pages/Shopping-Cart";
 
 function App() {
     
@@ -9,8 +11,10 @@ function App() {
 
         <BrowserRouter>
             <Routes>
+                <Route path={"/"} element={<Home />} />
                 <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/sign-in' element={<SignIn />} />
+                <Route path='/shoppingcart' element={<ShoppingCart />} />
             </Routes>
         </BrowserRouter>
 

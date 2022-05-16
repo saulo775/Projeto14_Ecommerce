@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 import Google from '../../assets/images/google.png'
 import Twitter from '../../assets/images/twitter.png'
@@ -21,16 +22,26 @@ function SignIn() {
     const SignIn = async () => {
         try {
             await axios.post('http://localhost:5000/sign-in', {
-                name: record.name,
                 email: record.email,
-                password: record.password,
-                checkPassword: record.checkPassword
+                password: record.password,                
             })
-            alert("Login feito com sucesso!")
-            navigate('/home')
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Login feito com sucesso!',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            navigate('/')
         } catch (e) {
-            console.log("error", e)
-            alert(`Ops, ocorreu um erro!`, e)
+            console.log("error", e.response.data)
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: `${e.response.data}`,
+                showConfirmButton: false,
+                timer: 1500
+              })
         }
     }
 

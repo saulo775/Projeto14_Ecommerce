@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 import Google from '../../assets/images/google.png'
 import Twitter from '../../assets/images/twitter.png'
@@ -26,11 +27,23 @@ function SignUp() {
                 password: record.password,
                 checkPassword: record.checkPassword
             })
-            alert("cadastro feito com sucesso!")
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Cadastro feito com sucesso',
+                showConfirmButton: false,
+                timer: 1500
+              })
             navigate('/sign-in')
         } catch (e) {
-            console.log("error", e)
-            alert(`Ops, ocorreu um erro!`, e)
+            console.log("error", e.response.data)
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: `${e.response.data}`,
+                showConfirmButton: false,
+                timer: 1500
+              })
         }
     }
 
