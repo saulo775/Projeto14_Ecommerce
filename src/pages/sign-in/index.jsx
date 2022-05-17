@@ -12,6 +12,7 @@ import { Main, RightSide, LeftSide, FormsSignUp, FormsSignIn } from "./style.js"
 function SignIn() {
     const navigate = useNavigate();
 
+    const [able, setAble] = useState(false)
     const [record, setRecord] = useState({
         name: '',
         email: '',
@@ -25,26 +26,27 @@ function SignIn() {
                 email: record.email,
                 password: record.password,                
             })
+            setAble(true)
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Login feito com sucesso!',
                 showConfirmButton: false,
-                timer: 1500
+                timer: 3000
               })
             navigate('/')
         } catch (e) {
-            console.log("error", e.response.data)
+            setAble(false)           
             Swal.fire({
                 position: 'center',
                 icon: 'error',
                 title: `${e.response.data}`,
                 showConfirmButton: false,
-                timer: 1500
+                timer: 3000
               })
         }
     }
-
+    
     const handleFormChange = (e) => {
         setRecord({ ...record, [e.target.name]: e.target.value })
     }
@@ -67,10 +69,10 @@ function SignIn() {
                 <FormsSignUp>
                     <h1>Saia de Filó</h1>
                     <h2>E-mail</h2>                      
-                    <input type='text' placeholder="Digite o seu e-mail" name="email" value={record.email} onChange={handleFormChange}></input>
+                    <input disabled={able}type='text' placeholder="Digite o seu e-mail" name="email" value={record.email} onChange={handleFormChange}></input>
                     <h2>Senha</h2>  
-                    <input type='password' placeholder="Digite a sua senha" name='password' value={record.password} onChange={handleFormChange}></input>        
-                     <button onClick={SignIn}>Login</button>
+                    <input disabled={able} type='password' placeholder="Digite a sua senha" name='password' value={record.password} onChange={handleFormChange}></input>        
+                     <button onClick={SignIn} disabled={able}>Login</button>
                     <Link to="/sign-up"><h3>Primeira vez? Cadastre-se!</h3></Link>
                 </FormsSignUp>
             </RightSide>
