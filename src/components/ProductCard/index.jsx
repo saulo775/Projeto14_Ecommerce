@@ -2,12 +2,17 @@ import React from "react";
 
 import { Container, ImageContent } from "./styles";
 
-export function ProductCard(props) {
+export function ProductCard({setActiveModal, setModalData,...rest}) {
     return (
-        <Container>
-            <ImageContent imageURL={props.imageURL}/>
-            <h3>{props.name}</h3>
-            <h4>R$ {props.price}</h4>
+        <Container
+            onClick={()=>{
+                setActiveModal(true);
+                setModalData(rest)
+            }}
+        >
+            <ImageContent imageURL={rest.imageURL}/>
+            <h3>{rest.name}</h3>
+            <h4>R$ {rest.price}</h4>
         </Container>
     );
 }

@@ -5,6 +5,8 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { ProductCard } from "../../components/ProductCard";
 
+import { Modal } from "../../components/Modal";
+
 import {
     Container,
     AllProducts,
@@ -12,6 +14,8 @@ import {
 
 export function Products() {
     const [ allProducts, setAllProducts ] = React.useState([]);
+    const [activeModal, setActiveModal] = React.useState(true);
+    const [ modalData, setModalData ] = React.useState();
 
     React.useEffect(() => {
         const promise = axios({
@@ -29,11 +33,21 @@ export function Products() {
 
     return (
         <Container>
+            {
+                activeModal 
+                ? <Modal 
+                    activeModal={activeModal}
+                    setActiveModal={setActiveModal}
+                    modalData={modalData}
+                /> 
+                : <></>
+            }
             <Header />
 
             <AllProducts>
                 {
                     allProducts.map((item)=>{
+
                         return(
                             <ProductCard
                                 key={item.id}
@@ -46,6 +60,8 @@ export function Products() {
                                 stock={item.stock}
                                 category={item.category}
                                 sales={item.sales}
+                                setActiveModal={setActiveModal}
+                                setModalData={setModalData}
                             />
                         )
                     })
