@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FiShoppingCart, FiUser } from "react-icons/fi";
 
-import { Featured } from "../../components/Featured";
+import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { Featured } from "../../components/Featured";
 
 import {
     Container,
-    Header,
     Banner,
     Title,
     Highlights,
@@ -47,18 +46,7 @@ export function Home() {
 
     return (
         <Container>
-            <Header>
-                <h1>Saia de Filó</h1>
-                <div>
-                    <nav>
-                        <Link to={"/"}>Home</Link>
-                        <Link to={"products"}>Produtos</Link>
-                    </nav>
-                    <FiShoppingCart />
-                    <FiUser />
-                </div>
-            </Header>
-
+            <Header/>
             <Banner>
                 <div>
                     <h1>As melhores vestimentas para as mais garbosas donzelas!</h1>
@@ -67,16 +55,12 @@ export function Home() {
                     </Link>
                 </div>
             </Banner>
-
             <Title>
                 <h2>Nossos Destaques</h2>
             </Title>
-
-
             <Highlights>
                 {featured}
             </Highlights>
-
             <Footer/>
         </Container>
     );
