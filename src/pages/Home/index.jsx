@@ -1,26 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { FiShoppingCart, FiUser } from "react-icons/fi";
 
-import { Featured } from "../../components/Featured";
+import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { Featured } from "../../components/Featured";
+import { FiUser, FiShoppingCart } from "react-icons/fi";
+
 
 import {
     Container,
-    Header,
     Banner,
     Title,
     Highlights,
 } from "./styles";
 
-export default function Home() {
+export function Home() {
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
     React.useEffect(()=>{
         const promise = axios({
             method: "GET",
-            url: "http://localhost:5500/featured-products",
+            url: "http://localhost:5000/featured-products",
         });
 
         promise.then((response)=>{
@@ -55,7 +56,7 @@ export default function Home() {
                         <Link to={"products"}>Produtos</Link>
                     </nav>
                     <Link to="/shoppingCart"><FiShoppingCart /></Link>
-                    <Link to="/sign-up"><FiUser /></Link>
+                    <Link to="/products"><FiUser /></Link>
                 </div>
             </Header>
 
@@ -67,16 +68,12 @@ export default function Home() {
                     </Link>
                 </div>
             </Banner>
-
             <Title>
                 <h2>Nossos Destaques</h2>
             </Title>
-
-
             <Highlights>
                 {featured}
             </Highlights>
-
             <Footer/>
         </Container>
     );
