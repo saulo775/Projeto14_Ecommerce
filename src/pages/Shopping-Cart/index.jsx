@@ -1,35 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import { FiShoppingCart, FiUser } from "react-icons/fi";
 
 import { Featured } from "../../components/Featured";
+import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-import {Main, RightSide, LeftSide, FormsSignUp, ListProduct, Container, Header } from "./style"
+import { Main, RightSide, LeftSide, FormsSignUp, ListProduct, Container } from "./style"
 
-function ShoppingCart(){
+const PORT = 5500;
+
+function ShoppingCart() {
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         const promise = axios({
             method: "GET",
-            url: "http://localhost:5000/featured-products",
+            url: `http://localhost:${PORT}/featured-products`,
         });
 
-        promise.then((response)=>{
+        promise.then((response) => {
             setFeaturedProducts(response.data);
         });
 
-        promise.catch((e)=>{
+        promise.catch((e) => {
             console.log(e);
         });
     }, []);
 
 
-    const featured = featuredProducts.map((item)=>{
+    const featured = featuredProducts.map((item) => {
         return (
-            <Featured 
+            <Featured
                 key={item.id}
                 id={item.id}
                 name={item.name}
@@ -39,9 +40,9 @@ function ShoppingCart(){
         );
     });
 
-    return(
+    return (
         <Container>
-            <Header>
+            {/* <Header>
                 <h1>Saia de Filó</h1>
                 <div>
                     <nav>
@@ -51,37 +52,38 @@ function ShoppingCart(){
                     <Link to="/shoppingCart"><FiShoppingCart /></Link>
                     <Link to="/sign-up"><FiUser /></Link>
                 </div>
-            </Header>
+            </Header> */}
+            <Header/>
             <Main>
-                <LeftSide>                
+                <LeftSide>
                     <ListProduct>
                         <ul>
                             <li>
-                               {featured}
+                                {featured}
                             </li>
                             <li>
-                               {featured}
+                                {featured}
                             </li>
                             <li>
-                               {featured}
+                                {featured}
                             </li>
                             <li>
-                               {featured}
+                                {featured}
                             </li>
                             <li>
-                               {featured}
+                                {featured}
                             </li>
                         </ul>
                     </ListProduct>
                 </LeftSide>
                 <RightSide>
                     <FormsSignUp>
-                   
+
                     </FormsSignUp>
                 </RightSide>
             </Main>
 
-            <Footer/>
+            <Footer />
         </Container>
     );
 }

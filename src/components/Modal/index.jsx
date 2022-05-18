@@ -1,5 +1,5 @@
 import React from "react";
-import { FiShoppingCart, FiX } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import { 
     Container,
     Content,
@@ -53,5 +53,5 @@ export function Modal({setActiveModal, modalData}) {
             </Content>
 
         </Container>
-    ) : <h1>Carregando</h1>
+    ) : <></>
 }

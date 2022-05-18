@@ -9,6 +9,8 @@ import Facebook from '../../assets/images/facebook.png'
 
 import { Main, RightSide, LeftSide, FormsSignUp, FormsSignIn } from "./style.js"
 
+const PORT = 5500;
+
 function SignIn() {
     const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ function SignIn() {
 
     const SignIn = async () => {
         try {
-            await axios.post('http://localhost:5000/sign-in', {
+            await axios.post(`http://localhost:${PORT}/sign-in`, {
                 email: record.email,
                 password: record.password,                
             })
@@ -59,9 +61,9 @@ function SignIn() {
                     <h4>Faça o login com:</h4> 
                     </div>
                     <div>
-                        <img src={Google} />
-                        <img src={Twitter} />
-                        <img src={Facebook} />
+                        <img src={Google} alt={"Logo Google"}/>
+                        <img src={Twitter} alt={"Logo Twitter"}/>
+                        <img src={Facebook} alt={"Logo Facebook"}/>
                     </div>
                 </FormsSignIn>
             </LeftSide>            
