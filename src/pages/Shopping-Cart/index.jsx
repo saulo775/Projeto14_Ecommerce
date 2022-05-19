@@ -1,15 +1,15 @@
 import React from "react";
 import axios from "axios";
 import { useContext } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-import {Main, RightSide, LeftSide, Container, Cart} from "./style"
-
 import UserContext from "../../assets/context/userContext";
 import CartContext from "../../assets/context/cartContext";
+
+import {Main, RightSide, LeftSide, Container, Cart} from "./style";
 
 export function ShoppingCart(){
     const {token}  = useContext(UserContext);
@@ -34,12 +34,15 @@ export function ShoppingCart(){
         promise.catch((e) => {
             console.log(e);
         });
-    }, []);  
+    }, [token.token]);  
 
     let total = 0;
-    cartProducts.map((item)=> {
+    cartProducts.forEach((item)=> {
         total = total + item.price;
     });
+
+    
+    total = total.toFixed(2);
 
 
     async function handleSendBuyToCheckout() {
@@ -93,5 +96,5 @@ export function ShoppingCart(){
                 <Footer />
             </Container>
         </CartContext.Provider>
-    );
+    )
 }

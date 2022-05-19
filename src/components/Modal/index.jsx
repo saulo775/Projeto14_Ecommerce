@@ -1,7 +1,7 @@
 import axios from "axios";
 
-import React, { useEffect, useState, useContext } from "react";
-import { FiShoppingCart, FiX } from "react-icons/fi";
+import React from "react";
+import { FiX } from "react-icons/fi";
 import {
     Container,
     Content,
@@ -13,7 +13,7 @@ import UserContext from "../../assets/context/userContext";
 import { useNavigate } from "react-router-dom";
 
 export function Modal({ setActiveModal, modalData }) {
-    const { token } = useContext(UserContext);
+    const { token } = React.useContext(UserContext);
 
     const navigate = useNavigate()
 
