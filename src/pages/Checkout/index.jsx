@@ -1,16 +1,24 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import InputMask from 'react-input-mask'
 import Swal from 'sweetalert2';
 
 
-import { Main, RightSide, LeftSide, FormsSignUp, Middle, CheckoutCart, Cart } from "./style.js"
-
+import { Main, RightSide, LeftSide, FormsSignUp, Middle, CheckoutCart, Cart, Product } from "./style.js"
+import UserContext from '../../assets/context/userContext.js';
 
 
 function Checkout() {
+    const {cartData} = useContext(UserContext);
+    console.log(cartData)
+
     const navigate = useNavigate();
+     
+    const card = [
+    {name: 'Cartão de crédito', type: 'credit'},
+    {name: 'Cartão de débito', type: 'debit'}
+    ];
 
     const [record, setRecord] = useState({
         name: '',
@@ -19,19 +27,27 @@ function Checkout() {
         country: '',
         telephone: '',
         addres: '',
-        cep: ''
+        cep: '',
+        card: '',
+        cvv: '',
+        typeCard:''
     })
+
     console.log(record)
+    
      const confirm = async () => {
          try {
-             await axios.post(`http://localhost:5000/checkout`, {
+             await axios.post(`http://localhost:5500/checkout`, {
                  name: record.name,
                  lastName: record.lastName,
                  cpf: record.cpf,
                  country: record.country,
                  telephone: record.telephone,
                  addres: record.addres,
-                 cep: record.cep
+                 cep: record.cep,
+                 card: record.card,
+                 cvv: record.cvv,
+                 typeCard: record.typeCard
              })
              Swal.fire({
                  position: 'center',
@@ -53,6 +69,7 @@ function Checkout() {
          }
      }
 
+    
     const handleFormChange = (e) => {
         setRecord({ ...record, [e.target.name]: e.target.value })
     }
@@ -60,7 +77,7 @@ function Checkout() {
     return (
         <Main>
             <LeftSide>
-                <FormsSignUp>
+                
                     <CheckoutCart>
                             <h1>Confirme seus dados pessoais e endereço:</h1>
                             <h2>Nome</h2>
@@ -78,25 +95,34 @@ function Checkout() {
                             <h2>CEP</h2>
                             <InputMask type='text' placeholder="Digite o seu cep" name="cep" mask="99999-999" value={record.cep} onChange={handleFormChange}></InputMask>
                     </CheckoutCart>
-                </FormsSignUp>
+                
             </LeftSide>
             <Middle>
                 <Cart>
                     <h1>Confirme seu metodo de pagamento:</h1>
-                    <select name="select">
-                        <option value="valor1">Cartão de crédito</option>
-                        <option value="valor2" selected>Cartão de débito</option>
-                        <option value="valor3">PayPal</option>
+                    
+                    <select name="typeCard" value={record.typeCard} onChange={handleFormChange}>
+                        {card.map((item) => (
+                        <option value={item.type}>{item.name}</option>
+                        ))}        
                     </select>
-                    <button></button>
+                    <h2>Número do cartão</h2>
+                    <InputMask type='text' placeholder="Digite o número do cartão" name="card" mask="9999-9999-9999-9999" value={record.card} onChange={handleFormChange}></InputMask>
+                    <h2>CVV</h2>
+                    <InputMask type='text' placeholder="Digite o CVV" name="cvv" mask="999" value={record.cvv} onChange={handleFormChange}></InputMask>
                 </Cart>
                 </Middle>
             <RightSide>
                 <FormsSignUp>
-                    <p>{record.name}</p>
-                    <p>{record.addres}</p>
-                    <p>{record.cpf}</p>
-                    
+                    {cartData.map(item => {
+                        const {name, price} = item
+                        return (
+                            <Product>
+                                <p>{name}</p>
+                                <p>{price}</p>
+                            </Product>
+                        )
+                    })}                    
                     <p>Total : R$ 100000</p>
                     <button onClick={confirm}>Finalizar compra</button>
                 </FormsSignUp>

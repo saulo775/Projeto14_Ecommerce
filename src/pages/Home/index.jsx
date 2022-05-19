@@ -17,16 +17,14 @@ import {
 
 const PORT = 5500
 
-export function Home() {
-    const {token} = useContext(UserContext)
-    console.log(token)
+export function Home() {        
     
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
     React.useEffect(()=>{
         const promise = axios({
             method: "GET",
-            url: `http://localhost:5000/featured-products`,
+            url: `http://localhost:5500/featured-products`,
         });
 
         promise.then((response)=>{

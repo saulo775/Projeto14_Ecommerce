@@ -11,10 +11,10 @@ import UserContext from "./assets/context/userContext";
 import Checkout from "./pages/Checkout";
 
 function App() {
-    const [token, setToken] = useState(null)
-    
+    const [token, setToken] = useState(null);
+    const [cartData, setCartData] = useState(null)
     return (
-        <UserContext.Provider value={{token, setToken}}>
+        <UserContext.Provider value={{token, setToken, cartData, setCartData}}>
             <BrowserRouter>
                 <Routes>
                     <Route path={"/"} element={<Home />} />

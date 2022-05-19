@@ -27,7 +27,7 @@ function SignIn() {
 
     function SignIn(){
 
-        const promise = axios.post('http://localhost:5000/sign-in', {
+        const promise = axios.post('http://localhost:5500/sign-in', {
                 email: record.email,
                 password: record.password
             })    
@@ -57,7 +57,6 @@ function SignIn() {
         })
     }
     
-   
     const handleFormChange = (e) => {
         setRecord({ ...record, [e.target.name]: e.target.value })
     }

@@ -15,27 +15,6 @@ export const Container = styled.section`
             margin-top: 0.5rem;
         }
     }
-
-    button {
-        flex: 1;
-        color: var(--white);
-        font-size: 1.25rem;
-        font-family: "poppins" sans-serif;
-        background-color: var(--primary-ligth);
-        border: none;
-        border-radius: 4px;
-        padding: 0.75rem 1.5rem;
-        align-items: center;
-        margin-top: 1rem;
-        transition: 300ms;
-    
-
-        :hover {
-            opacity: 1;
-            background-color: var(--primary);
-        }
-    }
-    
 `;
 
 export const ImageDestack = styled.div`
@@ -45,4 +24,24 @@ export const ImageDestack = styled.div`
     background-size: cover !important;
     background-clip: content-box;
     background: url(${(props)=>props.imageURL}) no-repeat;
+`;
+
+export const BuyButton = styled.button`
+    flex: 1;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-family: "poppins" sans-serif;
+    background-color: var(--primary-ligth);
+    border: none;
+    border-radius: 4px;
+    padding: 0.75rem 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+    transition: 300ms;
+
+
+    :hover {
+        opacity: 1;
+        background-color: var(--primary);
+    }
 `;

@@ -13,8 +13,6 @@ import {
     AllProducts,
 } from "./styles";
 
-const PORT = 5500;
-
 export function Products() {
     const [ allProducts, setAllProducts ] = React.useState([]);
     const [activeModal, setActiveModal] = React.useState(true);
@@ -23,7 +21,7 @@ export function Products() {
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
-            url: `http://localhost:5000/products`,
+            url: `http://localhost:5500/products`,
         });
 
         promise.then(({data}) => {
@@ -50,7 +48,6 @@ export function Products() {
             <AllProducts>
                 {
                     allProducts.map((item)=>{
-
                         return(
                             <ProductCard
                                 key={item.id}
