@@ -11,6 +11,8 @@ import {Main, RightSide, LeftSide, Container, Cart} from "./style"
 import UserContext from "../../assets/context/userContext";
 
 
+
+
 export function ShoppingCart(){
     const {token}  = useContext(UserContext);
     const [cartData, setCartData] = React.useState({});

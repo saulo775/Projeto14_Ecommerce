@@ -9,8 +9,6 @@ import Facebook from '../../assets/images/facebook.png'
 
 import { Main, RightSide, LeftSide, FormsSignUp, FormsSignIn } from "./style.js"
 
-const PORT = 5500;
-
 function SignUp() {
     const navigate = useNavigate();
 
