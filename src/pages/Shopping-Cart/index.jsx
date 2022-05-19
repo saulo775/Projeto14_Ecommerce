@@ -1,22 +1,22 @@
 import React from "react";
 import axios from "axios";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-import UserContext from "../../assets/context/userContext";
-import CartContext from "../../assets/context/cartContext";
+import {Main, RightSide, LeftSide, Container, Cart} from "./style"
 
-import {Main, RightSide, LeftSide, Container, Cart,} from "./style";
+import UserContext from "../../assets/context/userContext";
 
 export function ShoppingCart(){
     const {token, setCartData, cartData}  = useContext(UserContext);
     //const [cartData, setCartData] = React.useState();
     const [cartProducts, setCartProducts] = React.useState([]);
 
-
+    const context = useContext(UserContext)
+    
     console.log("CARTDATA",cartData)
 
     const navigate = useNavigate();
@@ -31,7 +31,8 @@ export function ShoppingCart(){
         });
 
         promise.then((response) => {
-            setCartProducts(response.data);
+            setCartProducts(response.data);       
+            context.setCartData(response.data)     
         });
 
         promise.catch((e) => {
@@ -47,18 +48,30 @@ export function ShoppingCart(){
     
 
     async function handleSendBuyToCheckout() {
+        
+        // if (!cartProducts) {
+        //     alert("Carrinho vazio!");
+        //     return;
+        // }
 
+        // await setCartData({...cartProducts, total});
+
+        navigate("/checkout");
+        //return;
     }
 
+
     return (
-        <Container>         
+        // <CartContext.Provider value={{cartData, setCartData}}>
+
+            <Container>         
                 <Header/>
                 <Main>
                     <LeftSide>
                             {cartProducts.map(featured => {
-                                const {name, price, imageURL} = featured;
+                                const {name, price, imageURL, _id} = featured;
                                 return (
-                                    <Cart>
+                                    <Cart key={_id}>
                                         <div>
                                             <img src={imageURL} alt={`imagem ${name}`}/>
                                             <p>{name}</p>
@@ -81,5 +94,6 @@ export function ShoppingCart(){
 
                 <Footer />
             </Container>
-    )
+        // </CartContext.Provider>
+    );
 }

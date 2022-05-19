@@ -6,7 +6,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Featured } from "../../components/Featured";
 
-import UserContext from "../../assets/context/userContext";
+//import UserContext from "../../assets/context/userContext";
 
 import {
     Container,
@@ -14,11 +14,11 @@ import {
     Title,
     Highlights,
 } from "./styles";
-import CartContext from "../../assets/context/cartContext";
+//import CartContext from "../../assets/context/cartContext";
 
 
-export function Home() {
-    //const {token} = React.useContext(UserContext);
+export function Home() {        
+    
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
     //console.log(featuredProducts)
 
