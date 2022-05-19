@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import React, {useEffect, useState, useContext} from "react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
 import { 
@@ -9,18 +10,24 @@ import {
 } from "./styles";
 
 import UserContext from "../../assets/context/userContext";
+import { useNavigate } from "react-router-dom";
 
 export function Modal({setActiveModal, modalData}) {
     const {token} = useContext(UserContext)
     console.log(token)
+
+    const navigate = useNavigate()
     
     const Buy = async () => {
         try{
             await axios.post("http://localhost:5000/shoppingCart",{
-                data: modalData
-            })
+                data: modalData,
+                userId: token.userId,
+               
+            }, {headers: {Authorization: `Bearer ${token.token}`}} )
             console.log('DEU')
         } catch (error){
+            navigate("/sign-in")
             console.log(error)
         }
     }
