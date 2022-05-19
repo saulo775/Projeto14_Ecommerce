@@ -3183,6 +3183,11 @@
   "resolved" "https://registry.npmjs.org/content-type/-/content-type-1.0.4.tgz"
   "version" "1.0.4"
 
+"context@^2.0.6":
+  "integrity" "sha512-qfFtpZ/4XlrV5fqEF+cU5A/XbM9vp6rCFCsOr107n8S2ENAHzuWbdiaBgqgUUQ9fHJ8aXktCaXkXjTPPIcohUQ=="
+  "resolved" "https://registry.npmjs.org/context/-/context-2.0.6.tgz"
+  "version" "2.0.6"
+
 "convert-source-map@^1.4.0", "convert-source-map@^1.6.0", "convert-source-map@^1.7.0":
   "integrity" "sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA=="
   "resolved" "https://registry.npmjs.org/convert-source-map/-/convert-source-map-1.8.0.tgz"

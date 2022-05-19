@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Featured } from "../../components/Featured";
-import { FiUser, FiShoppingCart } from "react-icons/fi";
 
+
+import UserContext from "../../assets/context/userContext";
 
 import {
     Container,
@@ -16,6 +17,9 @@ import {
 } from "./styles";
 
 export function Home() {
+    const {token} = useContext(UserContext)
+    console.log(token)
+    
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
     React.useEffect(()=>{
@@ -47,19 +51,8 @@ export function Home() {
     });
 
     return (
-        <Container>
-            <Header>
-                <h1>Saia de Filó</h1>
-                <div>
-                    <nav>
-                        <Link to={"/"}>Home</Link>
-                        <Link to={"products"}>Produtos</Link>
-                    </nav>
-                    <Link to="/shoppingCart"><FiShoppingCart /></Link>
-                    <Link to="/products"><FiUser /></Link>
-                </div>
-            </Header>
-
+        <Container>   
+            <Header/>            
             <Banner>
                 <div>
                     <h1>As melhores vestimentas para as mais garbosas donzelas!</h1>

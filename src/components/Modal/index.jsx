@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, {useEffect, useState} from "react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
 import { 
     Container,
@@ -8,7 +9,19 @@ import {
 } from "./styles";
 
 export function Modal({setActiveModal, modalData}) {
+    const {token} = useContext(UserContext)
+    console.log(token)
     
+    const Buy = async () => {
+        try{
+            await axios.post("http://localhost:5000/shoppingCart",{
+                data: modalData
+            })
+            console.log('DEU')
+        } catch (error){
+            console.log(error)
+        }
+    }
     
     return modalData ? (
         <Container>
@@ -44,9 +57,7 @@ export function Modal({setActiveModal, modalData}) {
                     
                     <h3>Por apenas R${modalData.price}</h3>
 
-                    <button>
-                        Adcionar ao carrinho
-                    </button>
+                    <button onClick={Buy}>Adcionar ao carrinho</button>
 
                     
                 </ProductInfos>
