@@ -70,9 +70,9 @@ function SignIn() {
                         <h4>Faça o login com:</h4>
                     </div>
                     <div>
-                        <img src={Google} />
-                        <img src={Twitter} />
-                        <img src={Facebook} />
+                        <img src={Google} alt={"Logo Google"}/>
+                        <img src={Twitter} alt={"Logo Twitter"}/>
+                        <img src={Facebook} alt={"Logo Facebook"}/>
                     </div>
                 </FormsSignIn>
             </LeftSide>

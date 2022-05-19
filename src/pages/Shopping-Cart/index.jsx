@@ -1,14 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 
 import { Featured } from "../../components/Featured";
+import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-import {Main, RightSide, LeftSide, FormsSignUp, ListProduct, Container, Header, Cart} from "./style"
+import {Main, RightSide, LeftSide, FormsSignUp, ListProduct, Container, Cart} from "./style"
 
 import UserContext from "../../assets/context/userContext";
 
@@ -18,24 +18,24 @@ export function ShoppingCart(){
 
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         const promise = axios({
             method: "GET",
             url: "http://localhost:5000/shoppingCart",
         });
 
-        promise.then((response)=>{
+        promise.then((response) => {
             setFeaturedProducts(response.data);
         });
 
-        promise.catch((e)=>{
+        promise.catch((e) => {
             console.log(e);
         });
     }, []);  
 
-    return(
+    return (
         <Container>
-            <Header>
+            {/* <Header>
                 <h1>Saia de Filó</h1>
                 <div>
                     <nav>
@@ -45,9 +45,10 @@ export function ShoppingCart(){
                     <Link to="/shoppingCart"><FiShoppingCart /></Link>
                     <Link to="/sign-up"><FiUser /></Link>
                 </div>
-            </Header>
+            </Header> */}
+            <Header/>
             <Main>
-                <LeftSide>                
+                <LeftSide>
                     <ListProduct>
                         {featuredProducts.map(featured => {
                             const {name, price, image_url} = featured
@@ -63,12 +64,12 @@ export function ShoppingCart(){
                 </LeftSide>
                 <RightSide>
                     <FormsSignUp>
-                   
+
                     </FormsSignUp>
                 </RightSide>
             </Main>
 
-            <Footer/>
+            <Footer />
         </Container>
     );
 }

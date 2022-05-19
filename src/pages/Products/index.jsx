@@ -7,10 +7,13 @@ import { ProductCard } from "../../components/ProductCard";
 
 import { Modal } from "../../components/Modal";
 
+
 import {
     Container,
     AllProducts,
 } from "./styles";
+
+const PORT = 5500;
 
 export function Products() {
     const [ allProducts, setAllProducts ] = React.useState([]);
@@ -20,7 +23,7 @@ export function Products() {
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
-            url: "http://localhost:5000/products",
+            url: `http://localhost:${PORT}/products`,
         });
 
         promise.then(({data}) => {

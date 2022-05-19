@@ -6,7 +6,6 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Featured } from "../../components/Featured";
 
-
 import UserContext from "../../assets/context/userContext";
 
 import {
@@ -15,6 +14,8 @@ import {
     Title,
     Highlights,
 } from "./styles";
+
+const PORT = 5500
 
 export function Home() {
     const {token} = useContext(UserContext)
@@ -25,7 +26,7 @@ export function Home() {
     React.useEffect(()=>{
         const promise = axios({
             method: "GET",
-            url: "http://localhost:5000/featured-products",
+            url: `http://localhost:5000/featured-products`,
         });
 
         promise.then((response)=>{

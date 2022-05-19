@@ -9,6 +9,8 @@ import Facebook from '../../assets/images/facebook.png'
 
 import { Main, RightSide, LeftSide, FormsSignUp, FormsSignIn } from "./style.js"
 
+const PORT = 5500;
+
 function SignUp() {
     const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ function SignUp() {
 
     const SignUp = async () => {
         try {
-            await axios.post('http://localhost:5000/sign-up', {
+            await axios.post(`http://localhost:${PORT}/sign-up`, {
                 name: record.name,
                 email: record.email,
                 password: record.password,
@@ -33,7 +35,7 @@ function SignUp() {
                 title: 'Cadastro feito com sucesso',
                 showConfirmButton: false,
                 timer: 1500
-              })
+            })
             navigate('/sign-in')
         } catch (e) {
             console.log("error", e.response.data)
@@ -43,7 +45,7 @@ function SignUp() {
                 title: `${e.response.data}`,
                 showConfirmButton: false,
                 timer: 1500
-              })
+            })
         }
     }
 
@@ -53,28 +55,28 @@ function SignUp() {
 
     return (
         <Main>
-            <LeftSide>                
+            <LeftSide>
                 <FormsSignIn>
                     <div>
-                    <h4>Faça o cadastro com:</h4> 
+                        <h4>Faça o cadastro com:</h4>
                     </div>
                     <div>
-                        <img src={Google} />
-                        <img src={Twitter} />
-                        <img src={Facebook} />
+                        <img src={Google} alt={"Logo Google"}/>
+                        <img src={Twitter} alt={"Logo Twitter"}/>
+                        <img src={Facebook} alt={"Logo Facebook"}/>
                     </div>
                 </FormsSignIn>
             </LeftSide>
             <RightSide>
                 <FormsSignUp>
                     <h1>Saia de Filó</h1>
-                    <h2>Nome</h2> 
+                    <h2>Nome</h2>
                     <input type='text' placeholder="Digite o seu nome" name="name" value={record.name} onChange={handleFormChange}></input>
-                    <h2>E-mail</h2> 
+                    <h2>E-mail</h2>
                     <input type='text' placeholder="Digite o seu e-mail" name="email" value={record.email} onChange={handleFormChange}></input>
-                    <h2>Senha</h2> 
+                    <h2>Senha</h2>
                     <input type='password' placeholder="Digite sua senha" name='password' value={record.password} onChange={handleFormChange}></input>
-                    <h2>Senha</h2> 
+                    <h2>Senha</h2>
                     <input type='password' placeholder="Confirme a senha" name='checkPassword' value={record.checkPassword} onChange={handleFormChange}></input>
                     <button onClick={SignUp}>Cadastrar</button>
                     <Link to="/sign-in"><h3>Já tem uma conta? Entre agora!</h3></Link>

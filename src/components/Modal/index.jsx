@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext} from "react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
 import { 
     Container,
@@ -7,6 +7,8 @@ import {
     ProductImage,
     ProductInfos
 } from "./styles";
+
+import UserContext from "../../assets/context/userContext";
 
 export function Modal({setActiveModal, modalData}) {
     const {token} = useContext(UserContext)
@@ -64,5 +66,5 @@ export function Modal({setActiveModal, modalData}) {
             </Content>
 
         </Container>
-    ) : <h1>Carregando</h1>
+    ) : <></>
 }

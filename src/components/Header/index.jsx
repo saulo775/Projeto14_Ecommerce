@@ -11,7 +11,7 @@ export function Header() {
                 <div>
                     <nav>
                         <Link to={"/"}>Home</Link>
-                        <Link to={"products"}>Produtos</Link>
+                        <Link to={"/products"}>Produtos</Link>
                     </nav>
                     <Link to={"shoppingcart"}><FiShoppingCart /></Link>
                     <Link to={"sign-up"}><FiUser /></Link>
