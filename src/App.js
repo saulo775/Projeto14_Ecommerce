@@ -10,7 +10,7 @@ import { ShoppingCart } from "./pages/Shopping-Cart/index.jsx"
 import UserContext from "./assets/context/userContext";
 
 function App() {
-    const [token, setToken] = useState(null)
+    const [token, setToken] = useState(null);
     
     return (
         <UserContext.Provider value={{token, setToken}}>

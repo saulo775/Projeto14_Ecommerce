@@ -1,31 +1,34 @@
 import React from "react";
 import axios from "axios";
 import { useContext } from "react";
+import {useNavigate } from "react-router-dom";
 
-import { FiShoppingCart, FiUser } from "react-icons/fi";
-
-import { Featured } from "../../components/Featured";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-import {Main, RightSide, LeftSide, FormsSignUp, ListProduct, Container, Cart} from "./style"
+import {Main, RightSide, LeftSide, Container, Cart} from "./style"
 
 import UserContext from "../../assets/context/userContext";
+import CartContext from "../../assets/context/cartContext";
 
 export function ShoppingCart(){
-    const {token} = useContext(UserContext)
-    console.log(token.token)
+    const {token}  = useContext(UserContext);
+    const [cartData, setCartData] = React.useState({});
+    const [cartProducts, setCartProducts] = React.useState([]);
 
-    const [featuredProducts, setFeaturedProducts] = React.useState([]);
-    console.log(featuredProducts)
+    const navigate = useNavigate();
+
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
             url: "http://localhost:5500/shoppingCart",
+            headers: {
+                Authorization: `Bearer ${token.token}`
+            }
         });
 
         promise.then((response) => {
-            setFeaturedProducts(response.data);
+            setCartProducts(response.data);
         });
 
         promise.catch((e) => {
@@ -33,32 +36,62 @@ export function ShoppingCart(){
         });
     }, []);  
 
+    let total = 0;
+    cartProducts.map((item)=> {
+        total = total + item.price;
+    });
+
+
+    async function handleSendBuyToCheckout() {
+
+        if (!cartProducts) {
+            alert("Carrinho vazio!");
+            return;
+        }
+        setCartData({
+            total,
+            cartProducts
+        });
+
+        navigate("/checkout");
+        return;
+    }
+
     return (
-        <Container>         
-            <Header/>
-            <Main>
-                <LeftSide>
-                    <ListProduct>
-                        {featuredProducts.map(featured => {
-                            const {name, price, image_url} = featured
-                            return (
-                                <Cart>
-                                    <img src={image_url}/>
-                                    <p>{name}</p>
-                                    <p>R$ {price}</p>                                  
-                                </Cart>                               
-                            )
-                        })}
-                    </ListProduct>
-                </LeftSide>
-                <RightSide>
-                    <FormsSignUp>
+        <CartContext.Provider value={{cartData, setCartData}}>
 
-                    </FormsSignUp>
-                </RightSide>
-            </Main>
+            <Container>         
+                <Header/>
+                <Main>
+                    <LeftSide>
+                            {cartProducts.map(featured => {
+                                const {name, price, imageURL} = featured
 
-            <Footer />
-        </Container>
+                                console.log(imageURL)
+                                return (
+                                    <Cart>
+                                        <div>
+                                            <img src={imageURL} alt={`imagem ${name}`}/>
+                                            <p>{name}</p>
+                                        </div>
+                                        <p>R$ {price}</p>                                  
+                                    </Cart>                               
+                                )
+                            })}
+                    </LeftSide>
+                    <RightSide>
+                        <div>
+                            <h2>TOTAL</h2>
+                            <h3>{total}</h3>
+                        </div>
+                        <button onClick={handleSendBuyToCheckout}>
+                            Finalizar Pedido
+                        </button>
+                    </RightSide>
+                </Main>
+
+                <Footer />
+            </Container>
+        </CartContext.Provider>
     );
 }

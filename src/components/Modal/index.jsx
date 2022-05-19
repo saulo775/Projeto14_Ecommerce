@@ -1,8 +1,8 @@
 import axios from "axios";
 
-import React, {useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { FiShoppingCart, FiX } from "react-icons/fi";
-import { 
+import {
     Container,
     Content,
     ProductImage,
@@ -12,44 +12,45 @@ import {
 import UserContext from "../../assets/context/userContext";
 import { useNavigate } from "react-router-dom";
 
-export function Modal({setActiveModal, modalData}) {
-    const {token} = useContext(UserContext)
-    console.log(token)
+export function Modal({ setActiveModal, modalData }) {
+    const { token } = useContext(UserContext);
 
     const navigate = useNavigate()
-    
+
     const Buy = async () => {
-        try{
-            await axios.post("http://localhost:5500/shoppingCart",{
+        try {
+            await axios.post("http://localhost:5500/shoppingCart", {
                 data: modalData,
                 userId: token.userId,
-            }, {headers: {Authorization: `Bearer ${token.token}`}} )
+            }, { headers: { Authorization: `Bearer ${token.token}` } });
+            navigate("/shoppingCart");
+
             console.log('DEU')
-        } catch (error){
-            navigate("/sign-in")
+        } catch (error) {
+            navigate("/sign-in");
             console.log(error)
         }
     }
-    
+
     return modalData ? (
         <Container>
             <FiX
-                onClick={()=>{
+                onClick={() => {
                     setActiveModal(false);
                 }}
             />
 
             <Content>
-                <ProductImage image_url={modalData.imageURL}/>
+                <ProductImage image_url={modalData.imageURL} />
                 <ProductInfos>
-                    <h2>{ modalData.name }</h2>
-                    <p>{ modalData.description }</p>
+                    <h2>{modalData.name}</h2>
+                    <p>{modalData.description}</p>
 
                     <ul>
                         {
-                            modalData.size.map((item, index)=>{
+                            modalData.size.map((item, index) => {
                                 return (
-                                    <span key={item+index}>
+                                    <span key={item + index}>
                                         <li>{item}</li>
                                     </span>
                                 )
@@ -58,16 +59,16 @@ export function Modal({setActiveModal, modalData}) {
                     </ul>
 
                     {
-                        modalData.stock <=10 
-                        ? <p className="lastUnits">Ultimas {modalData.stock} unidades restantes!</p>
-                        : <></>
+                        modalData.stock <= 10
+                            ? <p className="lastUnits">Ultimas {modalData.stock} unidades restantes!</p>
+                            : <></>
                     }
-                    
+
                     <h3>Por apenas R${modalData.price}</h3>
 
                     <button onClick={Buy}>Adcionar ao carrinho</button>
 
-                    
+
                 </ProductInfos>
             </Content>
 

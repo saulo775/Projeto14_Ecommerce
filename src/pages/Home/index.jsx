@@ -18,8 +18,8 @@ import {
 const PORT = 5500
 
 export function Home() {
-    const {token} = useContext(UserContext)
-    console.log(token)
+    const {token} = useContext(UserContext);
+    
     
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
