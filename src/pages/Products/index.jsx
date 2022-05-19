@@ -13,8 +13,6 @@ import {
     AllProducts,
 } from "./styles";
 
-const PORT = 5500;
-
 export function Products() {
     const [ allProducts, setAllProducts ] = React.useState([]);
     const [activeModal, setActiveModal] = React.useState(true);

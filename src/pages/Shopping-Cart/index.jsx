@@ -14,10 +14,10 @@ import UserContext from "../../assets/context/userContext";
 
 export function ShoppingCart(){
     const {token} = useContext(UserContext)
-    console.log(token)
+    console.log(token.token)
 
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
-
+    console.log(featuredProducts)
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
@@ -34,18 +34,7 @@ export function ShoppingCart(){
     }, []);  
 
     return (
-        <Container>
-            {/* <Header>
-                <h1>Saia de Filó</h1>
-                <div>
-                    <nav>
-                        <Link to={"/"}>Home</Link>
-                        <Link to={"products"}>Produtos</Link>
-                    </nav>
-                    <Link to="/shoppingCart"><FiShoppingCart /></Link>
-                    <Link to="/sign-up"><FiUser /></Link>
-                </div>
-            </Header> */}
+        <Container>         
             <Header/>
             <Main>
                 <LeftSide>
