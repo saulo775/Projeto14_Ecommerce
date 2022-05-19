@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
@@ -9,9 +10,11 @@ import Facebook from '../../assets/images/facebook.png'
 
 import { Main, RightSide, LeftSide, FormsSignUp, FormsSignIn } from "./style.js"
 
-const PORT = 5500;
+import UserContext from '../../assets/context/userContext';
 
 function SignIn() {
+    const context = useContext(UserContext)
+
     const navigate = useNavigate();
 
     const [able, setAble] = useState(false)
@@ -22,31 +25,36 @@ function SignIn() {
         checkPassword: '',
     })
 
-    const SignIn = async () => {
-        try {
-            await axios.post(`http://localhost:${PORT}/sign-in`, {
+    function SignIn(){
+
+        const promise = axios.post('http://localhost:5500/sign-in', {
                 email: record.email,
-                password: record.password,                
-            })
+                password: record.password
+            })    
+
+        promise.then(res =>{    
             setAble(true)
+            const {data} = res
+            console.log(data)           
+            context.setToken(data)
             Swal.fire({
                 position: 'center',
                 icon: 'success',
                 title: 'Login feito com sucesso!',
                 showConfirmButton: false,
                 timer: 3000
-              })
+            })
             navigate('/')
-        } catch (e) {
-            setAble(false)           
+        })
+        promise.catch(err => {
             Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: `${e.response.data}`,
+                title: 'Erro ao fazer login.',
                 showConfirmButton: false,
                 timer: 3000
-              })
-        }
+            })            
+        })
     }
     
     const handleFormChange = (e) => {
@@ -56,9 +64,9 @@ function SignIn() {
     return (
         <Main>
             <LeftSide>
-            <FormsSignIn>
+                <FormsSignIn>
                     <div>
-                    <h4>Faça o login com:</h4> 
+                        <h4>Faça o login com:</h4>
                     </div>
                     <div>
                         <img src={Google} alt={"Logo Google"}/>
@@ -66,15 +74,15 @@ function SignIn() {
                         <img src={Facebook} alt={"Logo Facebook"}/>
                     </div>
                 </FormsSignIn>
-            </LeftSide>            
+            </LeftSide>
             <RightSide>
                 <FormsSignUp>
                     <h1>Saia de Filó</h1>
-                    <h2>E-mail</h2>                      
-                    <input disabled={able}type='text' placeholder="Digite o seu e-mail" name="email" value={record.email} onChange={handleFormChange}></input>
-                    <h2>Senha</h2>  
-                    <input disabled={able} type='password' placeholder="Digite a sua senha" name='password' value={record.password} onChange={handleFormChange}></input>        
-                     <button onClick={SignIn} disabled={able}>Login</button>
+                    <h2>E-mail</h2>
+                    <input disabled={able} type='text' placeholder="Digite o seu e-mail" name="email" value={record.email} onChange={handleFormChange}></input>
+                    <h2>Senha</h2>
+                    <input disabled={able} type='password' placeholder="Digite a sua senha" name='password' value={record.password} onChange={handleFormChange}></input>
+                    <button onClick={SignIn} disabled={able}>Login</button>
                     <Link to="/sign-up"><h3>Primeira vez? Cadastre-se!</h3></Link>
                 </FormsSignUp>
             </RightSide>

@@ -1,5 +1,6 @@
-import React from "react";
-import { FiX } from "react-icons/fi";
+import axios from "axios";
+import React, {useEffect, useState, useContext} from "react";
+import { FiShoppingCart, FiX } from "react-icons/fi";
 import { 
     Container,
     Content,
@@ -7,8 +8,32 @@ import {
     ProductInfos
 } from "./styles";
 
+import UserContext from "../../assets/context/userContext";
+import { useNavigate } from "react-router-dom";
+
 export function Modal({setActiveModal, modalData}) {
+    const {token} = useContext(UserContext);
+
+    const navigate = useNavigate()
     
+    const Buy = async () => {
+        // try{
+        //     await axios({
+        //         url:"http://localhost:5500/shoppingCart",
+        //         method: "POST",
+        //         data: modalData,
+        //         headers: {
+        //             Authorization: `Bearer ${token.token}`
+        //         }
+        //     });
+
+        //     navigate("/shoppingCart");
+        //     console.log('DEU');
+        // } catch (error){
+        //     console.log("NUM DEU",error);
+        //     navigate("/sign-in")
+        // }
+    }
     
     return modalData ? (
         <Container>
@@ -44,9 +69,7 @@ export function Modal({setActiveModal, modalData}) {
                     
                     <h3>Por apenas R${modalData.price}</h3>
 
-                    <button>
-                        Adcionar ao carrinho
-                    </button>
+                    <button onClick={Buy}>Adcionar ao carrinho</button>
 
                     
                 </ProductInfos>

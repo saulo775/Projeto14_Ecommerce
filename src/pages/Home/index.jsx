@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Featured } from "../../components/Featured";
+
+import UserContext from "../../assets/context/userContext";
 
 import {
     Container,
@@ -16,12 +18,15 @@ import {
 const PORT = 5500
 
 export function Home() {
+    const {token} = useContext(UserContext)
+    console.log(token)
+    
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
     React.useEffect(()=>{
         const promise = axios({
             method: "GET",
-            url: `http://localhost:${PORT}/featured-products`,
+            url: `http://localhost:5500/featured-products`,
         });
 
         promise.then((response)=>{
@@ -47,8 +52,8 @@ export function Home() {
     });
 
     return (
-        <Container>
-            <Header/>
+        <Container>   
+            <Header/>            
             <Banner>
                 <div>
                     <h1>As melhores vestimentas para as mais garbosas donzelas!</h1>

@@ -23,7 +23,7 @@ export function Products() {
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
-            url: `http://localhost:${PORT}/products`,
+            url: `http://localhost:5500/products`,
         });
 
         promise.then(({data}) => {

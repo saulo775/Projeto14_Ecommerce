@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 
 import { Container, ImageDestack, BuyButton } from "./style";
 
@@ -7,6 +8,7 @@ export function Featured({id, name, price, image_url}) {
         console.log("Cliquei");
     }
 
+    
     return (
         <Container id={id}>
             <ImageDestack imageURL={image_url}/>
@@ -17,6 +19,7 @@ export function Featured({id, name, price, image_url}) {
             <BuyButton
                 onClick={sendProductToCart}
             >Comprar</BuyButton>
+            <button onClick="">Comprar</button>
         </Container>
     )
 }

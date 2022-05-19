@@ -147,10 +147,8 @@ export const LeftSide = styled.div`
     border-radius: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;  
     
-  
-
 `
 
 export const FormsSignUp = styled.div`
@@ -182,12 +180,14 @@ export const ListProduct = styled.div`
     width: 1200px;
     height: 750px;         
     background-color: #fefefe;
-    border-radius: 20px;
-    border: none;
+    border-radius: 20px;    
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: space-evenly;
     flex-direction: column;
+    overflow: auto;
+   
+    
 
     div{
         display: flex;
@@ -211,4 +211,19 @@ export const ListProduct = styled.div`
         line-height: 18px;       
         color: #C83967;    
     }
+`
+export const Cart = styled.div`
+    
+    background-color: #EDEDED;
+    z-index: 1;
+    margin-top: 30px;
+   
+
+   img{
+      
+       width: 175px;
+       height: 150px;
+      
+   }
+
 `

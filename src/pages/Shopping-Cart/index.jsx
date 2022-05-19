@@ -1,21 +1,27 @@
 import React from "react";
 import axios from "axios";
+import { useContext } from "react";
+
+import { FiShoppingCart, FiUser } from "react-icons/fi";
 
 import { Featured } from "../../components/Featured";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-import { Main, RightSide, LeftSide, FormsSignUp, ListProduct, Container } from "./style"
+import {Main, RightSide, LeftSide, FormsSignUp, ListProduct, Container, Cart} from "./style"
 
-const PORT = 5500;
+import UserContext from "../../assets/context/userContext";
 
-function ShoppingCart() {
+export function ShoppingCart(){
+    const {token} = useContext(UserContext)
+    console.log(token)
+
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
 
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
-            url: `http://localhost:${PORT}/featured-products`,
+            url: "http://localhost:5500/shoppingCart",
         });
 
         promise.then((response) => {
@@ -25,20 +31,7 @@ function ShoppingCart() {
         promise.catch((e) => {
             console.log(e);
         });
-    }, []);
-
-
-    const featured = featuredProducts.map((item) => {
-        return (
-            <Featured
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                image_url={item.image_url}
-            />
-        );
-    });
+    }, []);  
 
     return (
         <Container>
@@ -57,23 +50,16 @@ function ShoppingCart() {
             <Main>
                 <LeftSide>
                     <ListProduct>
-                        <ul>
-                            <li>
-                                {featured}
-                            </li>
-                            <li>
-                                {featured}
-                            </li>
-                            <li>
-                                {featured}
-                            </li>
-                            <li>
-                                {featured}
-                            </li>
-                            <li>
-                                {featured}
-                            </li>
-                        </ul>
+                        {featuredProducts.map(featured => {
+                            const {name, price, image_url} = featured
+                            return (
+                                <Cart>
+                                    <img src={image_url}/>
+                                    <p>{name}</p>
+                                    <p>R$ {price}</p>                                  
+                                </Cart>                               
+                            )
+                        })}
                     </ListProduct>
                 </LeftSide>
                 <RightSide>
@@ -87,5 +73,3 @@ function ShoppingCart() {
         </Container>
     );
 }
-
-export default ShoppingCart;

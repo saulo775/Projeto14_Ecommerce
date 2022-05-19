@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiShoppingCart } from "react-icons/fi";
+import { FiShoppingCart, FiUser } from "react-icons/fi";
 
 import { Container } from "./styles";
 
@@ -13,9 +13,8 @@ export function Header() {
                         <Link to={"/"}>Home</Link>
                         <Link to={"/products"}>Produtos</Link>
                     </nav>
-                    <Link to={"/shoppingcart"}><FiShoppingCart/></Link>
-                    {/* <Link to={"/shoppingcart"}><FiUser/></Link> */}
-                    
+                    <Link to={"shoppingcart"}><FiShoppingCart /></Link>
+                    <Link to={"sign-up"}><FiUser /></Link>
                 </div>
         </Container>
     )
