@@ -4,6 +4,31 @@ export const Container = styled.main`
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+
+    button{
+        display: flex;    
+        background: #C83967;
+        border-radius: 5px;
+        border: none;             
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+        color: #FFFFFF;
+        padding: 1rem 2rem;
+        text-align: center;
+        justify-content: center;
+        max-width: 30rem;
+        margin: 0 auto 2rem;
+
+        h2 {
+            font-size: 1.5rem;
+        }
+    }
+
+    button:hover{    
+        background: #EF9784; 
+    }
 `;
 
 export const Header = styled.header`

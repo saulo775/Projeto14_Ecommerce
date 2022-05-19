@@ -16,7 +16,7 @@ export const Main = styled.div`
 export const LeftSide = styled.div`
     display: flex;
     flex-direction: column;
-    width: 70vw;
+    width: 60vw;
     min-height: 55vh;
     background-color: var(--white);
     background-color: #FEFEFE;
@@ -50,18 +50,20 @@ export const RightSide = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 20vw;
+    width: 30vw;
     max-height: 50vh;
 
     border-radius: 20px;
     background-color: var(--red);
     padding: 1rem;
+    margin-left: 2rem;
     
 
     div {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: 1rem;
         h2 {
             font-size: 1.25rem;
             font-weight: 700;
@@ -69,8 +71,9 @@ export const RightSide = styled.div`
         }
 
         h3 {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: white;
+            //margin-left: 1rem;
         }
     }
 
@@ -85,6 +88,12 @@ export const RightSide = styled.div`
         line-height: 23px;
         color: #FFFFFF;
         padding: 1rem 2rem;
+        text-align: center;
+        justify-content: center;
+
+        h2 {
+            font-size: 1.5rem;
+        }
     }
 
     button:hover{    
@@ -92,4 +101,4 @@ export const RightSide = styled.div`
     }
 `
 
-export const ButtonAcquisition = styled.button ``
+export const ButtonSendToCheckout = styled.button ``

@@ -9,12 +9,15 @@ import { Footer } from "../../components/Footer";
 import UserContext from "../../assets/context/userContext";
 import CartContext from "../../assets/context/cartContext";
 
-import {Main, RightSide, LeftSide, Container, Cart} from "./style";
+import {Main, RightSide, LeftSide, Container, Cart,} from "./style";
 
 export function ShoppingCart(){
-    const {token}  = useContext(UserContext);
-    const [cartData, setCartData] = React.useState({});
+    const {token, setCartData, cartData}  = useContext(UserContext);
+    //const [cartData, setCartData] = React.useState();
     const [cartProducts, setCartProducts] = React.useState([]);
+
+
+    console.log("CARTDATA",cartData)
 
     const navigate = useNavigate();
 
@@ -40,37 +43,20 @@ export function ShoppingCart(){
     cartProducts.forEach((item)=> {
         total = total + item.price;
     });
-
-    
     total = total.toFixed(2);
-
+    
 
     async function handleSendBuyToCheckout() {
 
-        if (!cartProducts) {
-            alert("Carrinho vazio!");
-            return;
-        }
-        setCartData({
-            total,
-            cartProducts
-        });
-
-        navigate("/checkout");
-        return;
     }
 
     return (
-        <CartContext.Provider value={{cartData, setCartData}}>
-
-            <Container>         
+        <Container>         
                 <Header/>
                 <Main>
                     <LeftSide>
                             {cartProducts.map(featured => {
-                                const {name, price, imageURL} = featured
-
-                                console.log(imageURL)
+                                const {name, price, imageURL} = featured;
                                 return (
                                     <Cart>
                                         <div>
@@ -88,13 +74,12 @@ export function ShoppingCart(){
                             <h3>{total}</h3>
                         </div>
                         <button onClick={handleSendBuyToCheckout}>
-                            Finalizar Pedido
+                            <h2>Finalizar Pedido</h2>
                         </button>
                     </RightSide>
                 </Main>
 
                 <Footer />
             </Container>
-        </CartContext.Provider>
     )
 }

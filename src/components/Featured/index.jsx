@@ -15,10 +15,10 @@ export function Featured({id, name, price, image_url}) {
                 <h3>{name}</h3>
                 <h4>R$ {price}</h4>
             </div>
-            <BuyButton
+            {/* <BuyButton
                 onClick={sendProductToCart}
             >Comprar</BuyButton>
-            <button onClick="">Comprar</button>
+            <button onClick="">Comprar</button> */}
         </Container>
     )
 }
