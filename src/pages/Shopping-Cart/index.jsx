@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
-import { FiShoppingCart, FiUser } from "react-icons/fi";
+import { BsFillDashCircleFill, BsPlusCircleFill } from "react-icons/bs";
 
 import { Featured } from "../../components/Featured";
 import { Header } from "../../components/Header";
@@ -16,8 +16,12 @@ export function ShoppingCart(){
     const {token} = useContext(UserContext)
     console.log(token.token)
 
-    const [featuredProducts, setFeaturedProducts] = React.useState([]);
+    const [featuredProducts, setFeaturedProducts] = useState([]);
+
+    let [quantity, setQuantity] = useState(1)
+
     console.log(featuredProducts)
+    
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
@@ -34,6 +38,14 @@ export function ShoppingCart(){
         });
     }, []);  
 
+    function plus(){
+        setQuantity(quantity++)
+    }
+
+    function minus(){
+        setQuantity(quantity--)
+    }
+
     return (
         <Container>         
             <Header/>
@@ -41,12 +53,13 @@ export function ShoppingCart(){
                 <LeftSide>
                     <ListProduct>
                         {featuredProducts.map(featured => {
-                            const {name, price, image_url} = featured
+                            const {name, price, imageURL} = featured
                             return (
                                 <Cart>
-                                    <img src={image_url}/>
+                                    <img src={imageURL}/>
                                     <p>{name}</p>
-                                    <p>R$ {price}</p>                                  
+                                    <p>R$ {price}</p>
+                                    <div className="quantity"><BsFillDashCircleFill onClick={minus}/><p>{quantity}</p><BsPlusCircleFill onClick={plus}/></div>                                                                     
                                 </Cart>                               
                             )
                         })}
@@ -54,7 +67,7 @@ export function ShoppingCart(){
                 </LeftSide>
                 <RightSide>
                     <FormsSignUp>
-
+                        
                     </FormsSignUp>
                 </RightSide>
             </Main>

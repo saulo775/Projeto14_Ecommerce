@@ -8,6 +8,7 @@ import SignIn from "./pages/sign-in/index.jsx";
 import { ShoppingCart } from "./pages/Shopping-Cart/index.jsx"
 
 import UserContext from "./assets/context/userContext";
+import Checkout from "./pages/Checkout";
 
 function App() {
     const [token, setToken] = useState(null)
@@ -21,6 +22,7 @@ function App() {
                     <Route path='/sign-in' element={<SignIn />} />
                     <Route path='/shoppingCart' element={<ShoppingCart />} />
                     <Route path={"/products"} element={<Products />} />
+                    <Route path={"/checkout"} element={<Checkout />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>

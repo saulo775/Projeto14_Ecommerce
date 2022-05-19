@@ -36,7 +36,8 @@ export const RightSide = styled.div`
     flex-direction: column;
     width: 90vw;
     height: 90vh;
-    border-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -94,7 +95,8 @@ export const LeftSide = styled.div`
     height: 90vh;
     position: relative;
     background-image: url(${fundo});
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
