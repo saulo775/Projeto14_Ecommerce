@@ -50,7 +50,6 @@ export function Products() {
             <AllProducts>
                 {
                     allProducts.map((item)=>{
-
                         return(
                             <ProductCard
                                 key={item.id}
