@@ -47,17 +47,21 @@ export function Home() {
     }, []);
 
 
-    const featured = featuredProducts.map((item)=>{
-        return (
-            <Featured 
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                price={item.price}
-                image_url={item.image_url}
-            />
-        );
-    });
+    let featured = 0
+    if (featuredProducts) {
+        
+        featured = featuredProducts.map((item)=>{
+            return (
+                <Featured 
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    price={item.price}
+                    image_url={item.image_url}
+                />
+            );
+        });
+    }
 
     return (
         <Container>   
