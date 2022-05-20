@@ -1,136 +1,58 @@
 import styled from 'styled-components';
 
+export const Container = styled.section`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`;
 
 export const Main = styled.main`
-    
-    width: 95%;
-    height: 100%;
     display: flex;
-    align-items: center;
-    border-radius: 30px;
-    margin-top: 40px;  
-    margin-left: 45px; 
-    h2{
-        align-self: flex-start;
-        margin-left: 85px;     
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 18px;       
-        color: #C83967;
-        margin-bottom: 10px;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px; 
+    overflow-x: none;
+    padding: 40px;
+    
+    h2{       
+        margin-top: 10px;
     }
 
     h3{
-        align-self: flex-start;
-        margin-top: 20px;   
+        margin-top: 20px;        
+    }
+
+    h2, h3{
+        align-self: flex-start;   
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 18px;       
+        line-height: 18px;
         color: #C83967;
     }
-`
-export const RightSide = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    height: 90vh;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+`;
 
-    button{
-        width: 350px;
-        height: 46px;    
-        background: #C83967;
-        border-radius: 5px;
-        border: none;             
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 23px;
-        color: #FFFFFF;
-    }
-
-    button:hover{
-        width: 350px;
-        height: 46px;    
-        background: #EF9784;
-        border-radius: 5px;
-        border: none;             
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 23px;
-        color: #FFFFFF;
-    }
-
-    input{
-        width: 350px;
-        height: 58px;
-        background: #FEFEFE;
-        border-radius: 3px;
-        margin-bottom: 13px;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 23px;
-        color: #000000;
-        padding: 10px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        outline:0;
-        border-bottom-width: 3px;
-        border-bottom-color: #C83967;
-    }
-`
 export const LeftSide = styled.div`
+    flex: 1;
     display: flex;
     flex-direction: column;
-    width: 90vw;
-    height: 90vh;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    word-wrap: wrap;
+    border-radius: 20px 0 0 20px;
     background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    
-    button{
-        width: 350px;
-        height: 46px;    
-        background: #C83967;
-        border-radius: 5px;
-        border: none;             
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 23px;
-        color: #FFFFFF;
+    align-items: left;
+    padding: 2rem;
+
+    h1 {
+        margin-bottom: 1rem;
     }
 
-    button:hover{
-        width: 350px;
-        height: 46px;    
-        background: #EF9784;
-        border-radius: 5px;
-        border: none;             
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 23px;
-        color: #FFFFFF;
+    h2, h3 {
+        margin-left: 10px;
     }
 
-    input{
-        width: 350px;
+    input {
+        display: flex;
         height: 58px;
         background: #FEFEFE;
         border-radius: 3px;
@@ -140,80 +62,12 @@ export const LeftSide = styled.div`
         font-size: 20px;
         line-height: 23px;        
         padding: 10px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
         outline:0;
-        border-bottom-width: 3px;
-        border-bottom-color: #C83967;
-    }
-  
-
-`
-export const FormsSignUp = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+        border: none;
+        border-bottom: 3px solid #C83967;
+    } 
     
-    width: 500px;
-    height: 750px;         
-    background-color: #fefefe;
-    border-radius: 20px;
-    border: none;
-    
-   
-
-
-`
-export const FormsSignIn = styled.div`
-    width: 500px;
-    height: 750px;         
-    background-color: #fefefe;
-    border-radius: 20px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    div{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-      
-    }
-
-    img{
-        width: 50px;
-        height: 50px;
-        margin: 0 20px 0 20px;
-    }
-
-    h4{      
-        margin-bottom: 45px;       
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 18px;       
-        color: #C83967;    
-    }
-`
-export const Middle = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    height: 90vh;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background-color: #EEEEEE;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    button{
+    /* button{
         width: 350px;
         height: 46px;    
         background: #C83967;
@@ -227,9 +81,72 @@ export const Middle = styled.div`
     }
 
     button:hover{
-        width: 350px;
-        height: 46px;    
         background: #EF9784;
+    } */
+`
+
+export const Middle = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #EEEEEE;
+    padding: 2rem;
+
+    h2 {
+        margin-top: 1rem;
+        margin: none;
+    }
+
+    select {
+        margin: 0.5rem 0 1rem;
+        outline: none;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: none;
+        border-bottom: 3px solid var(--primary);
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+    }
+
+    input{
+        display: flex;
+        height: 58px;
+        background: #FEFEFE;
+        border-radius: 3px;
+        margin-bottom: 13px;
+        margin-top: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        color: #000000;
+        padding: 10px;
+        outline:0;
+        border: none;
+        border-bottom: 3px solid #C83967;
+    }
+`
+
+export const RightSide = styled.div`
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 0 20px 20px 0;
+    background-color: #ffffff;
+    padding: 2rem;
+
+    p.total {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    button{
+        height: 46px;    
+        background: #C83967;
         border-radius: 5px;
         border: none;             
         font-style: normal;
@@ -239,153 +156,28 @@ export const Middle = styled.div`
         color: #FFFFFF;
     }
 
-    input{
-        width: 350px;
-        height: 58px;
-        background: #FEFEFE;
-        border-radius: 3px;
-        margin-bottom: 13px;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 23px;
-        color: #000000;
-        padding: 10px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        outline:0;
-        border-bottom-width: 3px;
-        border-bottom-color: #C83967;
-    }
-
-`
-export const CheckoutCart = styled.div`
-    width: 500px;
-    height: 750px;         
-    background-color: #fefefe;
-    border-radius: 20px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-   
-
-    h1{
-        color: black;
-        font-size: 20px;
-        font-family: 'Popins', sans-serif;
-        line-height: 23px;
-        margin: 0 0px 30px 30px;
-    }
-
-    div{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-      
-    }
-
-    img{
-        width: 50px;
-        height: 50px;
-        margin: 0 20px 0 20px;
-    }
-
-    h4{      
-        margin-bottom: 45px;       
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 18px;       
-        color: #C83967;    
+    button:hover{ 
+        background: #EF9784;
     }
 `
-export const Cart = styled.div`
-    width: 500px;
-    height: 750px;         
-    background-color: #EEEEEE;
-    border-radius: 20px;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
-    select{
-        width: 350px;
-        height: 46px;    
-        background: #C83967;
-        border-radius: 5px;
-        border: none;            
-        margin-bottom: 30px; 
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 23px;
-        color: #FFFFFF;
-    }
-    
-    input{
-        width: 350px;
-        height: 58px;
-        background: #EEEEEE;
-        border-radius: 3px;
-        margin-bottom: 30px;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 23px;
-        color: #000000;
-        padding: 10px;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        outline:0;
-        border-bottom-width: 3px;
-        border-bottom-color: #C83967;
-    }
-
-    h1{
-        color: black;
-        font-size: 20px;
-        font-family: 'Popins', sans-serif;
-        line-height: 23px;
-        margin: 0 0px 30px 0px;
-    }
-
-    div{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-      
-    }
-
-    img{
-        width: 50px;
-        height: 50px;
-        margin: 0 20px 0 20px;
-    }
-
-    h4{      
-        margin-bottom: 45px;       
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 18px;       
-        color: #C83967;    
-    }
-`
 export const Product = styled.div`
+    flex: 1;
     display: flex;
+    justify-content: space-between;
     border-color: #C83967;
     border-width: 3px;
-    padding:30px;
+    align-items: center;
     
-    p{
+    div {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
     }
 `

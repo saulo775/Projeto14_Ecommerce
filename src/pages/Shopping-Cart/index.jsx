@@ -11,7 +11,7 @@ import {Main, RightSide, LeftSide, Container, Cart} from "./style"
 import UserContext from "../../assets/context/userContext";
 
 export function ShoppingCart(){
-    const {token, setCartData, cartData}  = useContext(UserContext);
+    const {token, cartData}  = useContext(UserContext);
     //const [cartData, setCartData] = React.useState();
     const [cartProducts, setCartProducts] = React.useState([]);
 
@@ -38,6 +38,7 @@ export function ShoppingCart(){
         promise.catch((e) => {
             console.log(e);
         });
+        //eslint-disable-next-line
     }, [token.token]);  
 
     let total = 0;
