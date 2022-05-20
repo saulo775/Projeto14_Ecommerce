@@ -10,12 +10,9 @@ import {Main, RightSide, LeftSide, Container, Cart} from "./style"
 
 import UserContext from "../../assets/context/userContext";
 
-
-
-
 export function ShoppingCart(){
-    const {token}  = useContext(UserContext);
-    const [cartData, setCartData] = React.useState({});
+    const {token, cartData}  = useContext(UserContext);
+    //const [cartData, setCartData] = React.useState();
     const [cartProducts, setCartProducts] = React.useState([]);
 
     const context = useContext(UserContext)
@@ -41,6 +38,7 @@ export function ShoppingCart(){
         promise.catch((e) => {
             console.log(e);
         });
+        //eslint-disable-next-line
     }, [token.token]);  
 
     let total = 0;
@@ -60,11 +58,9 @@ export function ShoppingCart(){
                 <Main>
                     <LeftSide>
                             {cartProducts.map(featured => {
-                                const {name, price, imageURL} = featured
-
-                                console.log(imageURL)
+                                const {name, price, imageURL, _id} = featured;
                                 return (
-                                    <Cart>
+                                    <Cart key={_id}>
                                         <div>
                                             <img src={imageURL} alt={`imagem ${name}`}/>
                                             <p>{name}</p>
@@ -80,7 +76,7 @@ export function ShoppingCart(){
                             <h3>{total}</h3>
                         </div>
                         <button onClick={handleSendBuyToCheckout}>
-                            Finalizar Pedido
+                            <h2>Finalizar Pedido</h2>
                         </button>
                     </RightSide>
                 </Main>

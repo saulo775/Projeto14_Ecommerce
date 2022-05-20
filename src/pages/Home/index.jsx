@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import { Header } from "../../components/Header";
@@ -14,11 +14,16 @@ import {
     Title,
     Highlights,
 } from "./styles";
+//import CartContext from "../../assets/context/cartContext";
 
 
 export function Home() {        
     
     const [featuredProducts, setFeaturedProducts] = React.useState([]);
+    //console.log(featuredProducts)
+
+    const navigate = useNavigate();
+
 
     React.useEffect(()=>{
         const promise = axios({
@@ -65,6 +70,10 @@ export function Home() {
             <Highlights>
                 {featured}
             </Highlights>
+
+            <button onClick={()=>{
+                navigate("/products")
+            }}>Ver todos os produtos</button>
             <Footer/>
         </Container>
     );

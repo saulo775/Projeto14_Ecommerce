@@ -1,12 +1,8 @@
 import React from "react";
 
-import { Container, ImageDestack, BuyButton } from "./style";
+import { Container, ImageDestack } from "./style";
 
 export function Featured({id, name, price, image_url}) {
-    function sendProductToCart() {
-        console.log("Cliquei");
-    }
-
     
     return (
         <Container id={id}>
@@ -15,10 +11,6 @@ export function Featured({id, name, price, image_url}) {
                 <h3>{name}</h3>
                 <h4>R$ {price}</h4>
             </div>
-            <BuyButton
-                onClick={sendProductToCart}
-            >Comprar</BuyButton>
-            <button onClick="">Comprar</button>
         </Container>
     )
 }

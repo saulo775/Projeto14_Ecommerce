@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import React,{ useState } from "react";
 
 import { Home } from "./pages/Home";
 import { Products } from "./pages/Products";
@@ -12,7 +12,7 @@ import Checkout from "./pages/Checkout";
 
 function App() {
     const [token, setToken] = useState(null);
-    const [cartData, setCartData] = useState(null)
+    const [cartData, setCartData] = useState({})
     return (
         <UserContext.Provider value={{token, setToken, cartData, setCartData}}>
             <BrowserRouter>
