@@ -28,7 +28,7 @@ export function Home() {
     React.useEffect(()=>{
         const promise = axios({
             method: "GET",
-            url: `https://saia-back.herokuapp.com/featured-products`,
+            url: `https://saia-de-filo.herokuapp.com/featured-products`,
         });
 
         promise.then((response)=>{

@@ -19,7 +19,7 @@ export function Modal({ setActiveModal, modalData }) {
 
     const Buy = async () => {
         try {
-            await axios.post("https://saia-back.herokuapp.com/shoppingCart", {
+            await axios.post("https://saia-de-filo.herokuapp.com/shoppingCart", {
                 data: modalData,
                 userId: token.userId,
             }, { headers: { Authorization: `Bearer ${token.token}` } });
