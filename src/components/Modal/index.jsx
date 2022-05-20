@@ -1,7 +1,7 @@
 import axios from "axios";
-
-import React, { useEffect, useState, useContext } from "react";
-import { FiShoppingCart, FiX } from "react-icons/fi";
+import Swal from "sweetalert2";
+import React, { useContext } from "react";
+import {  FiX } from "react-icons/fi";
 import {
     Container,
     Content,
@@ -23,9 +23,13 @@ export function Modal({ setActiveModal, modalData }) {
                 data: modalData,
                 userId: token.userId,
             }, { headers: { Authorization: `Bearer ${token.token}` } });
-            navigate("/shoppingCart");
-
-            console.log('DEU')
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Produto adicionado ao carrinho',
+                showConfirmButton: false,
+                timer: 1500
+            })                        
         } catch (error) {
             navigate("/sign-in");
             console.log(error)

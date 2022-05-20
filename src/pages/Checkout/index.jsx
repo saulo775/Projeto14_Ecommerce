@@ -10,8 +10,8 @@ import UserContext from '../../assets/context/userContext.js';
 
 
 function Checkout() {
-    const {cartData} = useContext(UserContext);
-    console.log(cartData)
+    const {cartData, token} = useContext(UserContext);
+    console.log(token.userId)
 
     const navigate = useNavigate();
      
@@ -30,14 +30,14 @@ function Checkout() {
         cep: '',
         card: '',
         cvv: '',
-        typeCard:''
+        typeCard: "credit"
     })
 
     console.log(record)
     
      const confirm = async () => {
          try {
-             await axios.post(`http://localhost:5500/checkout`, {
+             await axios.post("http://localhost:5500/checkout", {
                  name: record.name,
                  lastName: record.lastName,
                  cpf: record.cpf,
@@ -47,24 +47,35 @@ function Checkout() {
                  cep: record.cep,
                  card: record.card,
                  cvv: record.cvv,
-                 typeCard: record.typeCard
-             })
+                 typeCard: record.typeCard,
+                 userId: token.userId,
+                 cartData
+             },{ headers: { Authorization: `Bearer ${token.token}` } })
+
              Swal.fire({
                  position: 'center',
                  icon: 'success',
-                 title: 'Cadastro feito com sucesso',
+                 title: 'Agora é so aguardar a entrega !',
                  showConfirmButton: false,
                  timer: 1500
              })
-             navigate('/sign-in')
+
+             try{
+                 await axios.delete(`http://localhost:5500/cart/${token.userId}`,{ 
+                     headers: { Authorization: `Bearer ${token.token}` }                    
+                    })
+                 console.log("deletou")
+             }catch(e){
+                 console.log("nao deletou", e)
+             }
          } catch (e) {
-             console.log("error", e.response.data)
+             console.log("error", e)
              Swal.fire({
                  position: 'center',
                  icon: 'error',
                  title: `${e.response.data}`,
                  showConfirmButton: false,
-                 timer: 1500
+                 timer: 3000
              })
          }
      }

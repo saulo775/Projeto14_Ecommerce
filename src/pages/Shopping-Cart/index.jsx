@@ -51,22 +51,10 @@ export function ShoppingCart(){
     
 
     async function handleSendBuyToCheckout() {
-        
-        // if (!cartProducts) {
-        //     alert("Carrinho vazio!");
-        //     return;
-        // }
-
-        // await setCartData({...cartProducts, total});
-
-
-        navigate("/checkout");
-        // return;
+        navigate("/checkout");  
     }
 
-    return (
-        // <CartContext.Provider value={{cartData, setCartData}}>
-
+    return (        
             <Container>         
                 <Header/>
                 <Main>
@@ -99,6 +87,5 @@ export function ShoppingCart(){
 
                 <Footer />
             </Container>
-        // </CartContext.Provider>
     );
 }
