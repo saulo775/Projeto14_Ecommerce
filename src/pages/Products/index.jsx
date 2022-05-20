@@ -21,7 +21,7 @@ export function Products() {
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
-            url: `http://localhost:5500/products`,
+            url: `https://saia-back.herokuapp.com/products`,
         });
 
         promise.then(({data}) => {

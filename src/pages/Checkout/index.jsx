@@ -37,7 +37,7 @@ function Checkout() {
     
      const confirm = async () => {
          try {
-             await axios.post("http://localhost:5500/checkout", {
+             await axios.post("https://saia-back.herokuapp.com/checkout", {
                  name: record.name,
                  lastName: record.lastName,
                  cpf: record.cpf,
@@ -61,7 +61,7 @@ function Checkout() {
              })
 
              try{
-                 await axios.delete(`http://localhost:5500/cart/${token.userId}`,{ 
+                 await axios.delete(`https://saia-back.herokuapp.com/cart/${token.userId}`,{ 
                      headers: { Authorization: `Bearer ${token.token}` }                    
                     })
                  console.log("deletou")

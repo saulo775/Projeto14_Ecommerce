@@ -24,7 +24,7 @@ export function ShoppingCart(){
     React.useEffect(() => {
         const promise = axios({
             method: "GET",
-            url: "http://localhost:5500/shoppingCart",
+            url: "https://saia-back.herokuapp.com/shoppingCart",
             headers: {
                 Authorization: `Bearer ${token.token}`
             }
