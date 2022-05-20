@@ -33,6 +33,8 @@ export function Modal({ setActiveModal, modalData }) {
         } catch (error) {
             navigate("/sign-in");
             console.log(error)
+            console.log(error);
+            
         }
     }
 
