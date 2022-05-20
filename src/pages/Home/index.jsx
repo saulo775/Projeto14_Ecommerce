@@ -36,7 +36,7 @@ export function Home() {
         });
 
         promise.catch((e)=>{
-            console.log(e);
+            console.log("realmente deu erro",e);
         });
     }, []);
 
