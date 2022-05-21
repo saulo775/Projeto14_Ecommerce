@@ -27,7 +27,7 @@ function SignIn() {
 
     function SignIn(){
 
-        const promise = axios.post('https://saia-de-filo.herokuapp.com/sign-in', {
+        const promise = axios.post('https://saia-back.herokuapp.com/sign-in', {
                 email: record.email,
                 password: record.password
             })    

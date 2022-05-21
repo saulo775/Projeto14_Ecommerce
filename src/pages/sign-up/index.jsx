@@ -21,7 +21,7 @@ function SignUp() {
 
     const SignUp = async () => {
         try {
-            await axios.post(`https://saia-de-filo.herokuapp.com/sign-up`, {
+            await axios.post(`https://saia-back.herokuapp.com/sign-up`, {
                 name: record.name,
                 email: record.email,
                 password: record.password,
